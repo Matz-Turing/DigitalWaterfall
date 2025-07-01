@@ -1,0 +1,249 @@
+:root {
+    --sky-blue-top: #87ceeb;
+    --sky-blue-bottom: #e0f6ff;
+    --water-light: #a7d7e8;
+    --water-dark: #4e8a9e;
+    --water-foam: rgba(255, 255, 255, 0.8);
+    --rock-dark: #6B5B4B;
+    --rock-medium: #7C6C5C;
+    --rock-light: #887868;
+    --plant-green-dark: #2c5d3d;
+    --plant-green-light: #5a996b;
+    --butterfly-wing1: #FFC107;
+    --butterfly-wing2: #FF9800;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#waterfall-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--sky-blue-top), var(--sky-blue-bottom));
+}
+
+.distant-mountains {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    background: repeating-linear-gradient(
+        45deg,
+        #778a9c,
+        #778a9c 10px,
+        #6d7f90 10px,
+        #6d7f90 20px
+    );
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.cliff-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+.rock-formation {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+}
+
+.waterfall {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20%;
+    height: 92%;
+    z-index: 10;
+    filter: drop-shadow(0 0 10px white);
+}
+
+.stream {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        var(--water-foam),
+        var(--water-light) 50%,
+        var(--water-foam)
+    );
+    background-size: 100% 50px;
+    border-radius: 0 0 150px 150px / 0 0 30px 30px;
+    animation: flow 1s linear infinite;
+}
+
+.stream-2 {
+    left: 10%;
+    width: 80%;
+    opacity: 0.7;
+    animation-duration: 1.2s;
+}
+
+.stream-3 {
+    left: 5%;
+    width: 90%;
+    opacity: 0.5;
+    animation-duration: 0.8s;
+}
+
+@keyframes flow {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+#particles-js {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    z-index: 15;
+}
+
+.pool {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15%;
+    background: var(--water-dark);
+    z-index: 12;
+    border-top: 2px solid var(--water-light);
+}
+
+.ripples {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.ripples::before, .ripples::after {
+    content: '';
+    position: absolute;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    animation: ripple-effect 4s infinite;
+    opacity: 0;
+}
+
+.ripples::before {
+    left: 48%;
+    bottom: 30%;
+    width: 50px;
+    height: 25px;
+}
+
+.ripples::after {
+    left: 52%;
+    bottom: 20%;
+    width: 80px;
+    height: 40px;
+    animation-delay: 2s;
+}
+
+@keyframes ripple-effect {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
+}
+
+.foreground-rocks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    z-index: 20;
+}
+
+.rock-1, .rock-2 {
+    position: absolute;
+    bottom: -10px;
+    filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.4));
+}
+.rock-1 { left: -2%; width: 250px; }
+.rock-2 { right: -5%; width: 300px; transform: scaleX(-1); }
+
+.flora {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    z-index: 25;
+}
+
+.plant {
+    position: absolute;
+    color: var(--plant-green-dark);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    transform-origin: bottom center;
+    animation: sway 5s infinite alternate ease-in-out;
+}
+.plant-1 { font-size: 3rem; bottom: 12%; left: 18%; animation-delay: -1s; }
+.plant-2 { font-size: 2.5rem; bottom: 5%; left: 8%; }
+.plant-3 { font-size: 3.5rem; bottom: 8%; right: 15%; color: var(--plant-green-light); animation-delay: -2.5s; }
+
+@keyframes sway {
+    from { transform: rotate(-3deg); }
+    to { transform: rotate(3deg); }
+}
+
+.fauna {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    pointer-events: none;
+}
+
+#butterfly {
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    width: 60px;
+    height: 60px;
+}
+
+.wing {
+    animation: flap 0.3s infinite alternate ease-in-out;
+}
+.wing-left { transform-origin: right center; fill: var(--butterfly-wing1); }
+.wing-right { transform-origin: left center; fill: var(--butterfly-wing2); }
+
+@keyframes flap {
+    0% { transform: scaleY(0.1) rotateY(70deg); }
+    100% { transform: scaleY(1) rotateY(0deg); }
+}
+
+.scene-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+}
+
+.scene-controls .btn {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.animation-paused * {
+    animation-play-state: paused !important;
+}
