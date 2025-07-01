@@ -1,5 +1,7 @@
 # Cena de Cachoeira Digital
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="1000">
+
 Este projeto é uma demonstração visual interativa que cria uma cena de cachoeira viva e relaxante usando tecnologias web modernas. O objetivo é combinar animações, efeitos de partículas e som ambiente para construir uma experiência imersiva diretamente no navegador.
 
 ## Gif
